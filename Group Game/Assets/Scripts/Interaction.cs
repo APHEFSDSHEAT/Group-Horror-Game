@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
+    [SerializeField] public bool nearCloset;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +16,18 @@ public class Interaction : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        nearCloset = true;
+    }
+
+    public void GetInCloset()
+    {
+        //if (Input.GetKeyDown(a)
+        
+            
+        
+    }
+
 }
