@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float jumpPower = 15f;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] Transform feet;
+    [SerializeField] public float sprintSpeed = 10f;
 
     float mx;
     bool isGrounded;
