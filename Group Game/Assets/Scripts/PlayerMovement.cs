@@ -10,7 +10,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float jumpPower = 15f;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] Transform feet;
-    [SerializeField] public float sprintSpeed = 10f;
+    [SerializeField] public float sprintSpeed = 4f;
+    [SerializeField] public float afterSprintSpeed = 2f;
+    [SerializeField] public float cooldown = 3f;
+    [SerializeField] public float sprintTime = 6f;
 
     float mx;
     bool isGrounded;
@@ -25,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         mx = Input.GetAxis("Horizontal");
+
         if (Input.GetButtonDown("Jump"))
         {
             Jump();
@@ -42,8 +46,17 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1);
         }
     }
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
+        if (Input.GetButton("Run"))
+        {
+            speed = sprintSpeed;
+        }
+        else if(Input.GetButtonUp("Run"))
+        {
+            speed = afterSprintSpeed;
+        }
+
         rb.velocity = new Vector2(mx * speed, rb.velocity.y);
     }
 
