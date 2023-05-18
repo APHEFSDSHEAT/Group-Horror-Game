@@ -4,27 +4,38 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
+    [Header("bools")]
     [SerializeField] public bool nearCloset;
-    // Start is called before the first frame update
+
+    [Header("sound")]
+    [SerializeField] AudioClip getInClosetSFX;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        GetInCloset();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        nearCloset = true;
+        if (collision.gameObject.tag == "player")
+        {
+            nearCloset = true;
+        }
+        
     }
 
     public void GetInCloset()
     {
-        //if (Input.GetKeyDown(a)
+        if (Input.GetKeyDown("e") && nearCloset == true)
+        {
+            Debug.Log("e was pressed");
+            //AudioManager.instance.PlayClip(getInClosetSFX);
+        }
         
             
         
